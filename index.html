@@ -1,0 +1,3302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Navitech Engineering - Engineering Precision, Delivering Excellence</title>
+    <meta name="description" content="Leading engineering solutions provider specializing in high-precision Forging, Casting, Machining, and Sheet Metal fabrication. ISO certified with 14+ years of excellence.">
+    <meta name="keywords" content="engineering, forging, casting, machining, sheet metal, precision manufacturing, automotive, industrial">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: none;
+            font-family: sans-serif, 'Roboto';
+        }
+
+        :root {
+            /* ===== Main Website Variables ===== */
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+            /* ===== About Page Variables (renamed with prefix) ===== */
+            --about-primary-blue: #4A9EFF;
+            --about-secondary-blue: #6BB6FF;
+            --about-primary-orange: #FF7A3D;
+            --about-dark-bg: #1A2332;
+            --about-darker-bg: #0F1419;
+            --about-card-bg: #243447;
+            --about-text-primary: #FFFFFF;
+            --about-text-secondary: #B8C5D1;
+            --about-accent-blue: #5DADE2;
+            --about-success-green: #2ECC71;
+            --about-gradient-primary: linear-gradient(135deg, #4A9EFF 0%, #FF7A3D 100%);
+            --about-gradient-dark: linear-gradient(135deg, #243447 0%, #1A2332 100%);
+            --about-shadow-light: 0 10px 30px rgba(74, 158, 255, 0.1);
+            --about-shadow-orange: 0 10px 30px rgba(255, 122, 61, 0.1);
+        }
+
+
+        [data-theme="dark"] {
+            --primary-blue: #60a5fa;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #fb923c;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --border-color: #374151;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-primary);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            padding: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            width: 60px;
+            height: 32px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .theme-toggle:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 0 0 3px rgba(30, 64, 175, 0.2);
+        }
+
+        .theme-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-icon {
+            font-size: 12px;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Dark theme active state */
+        [data-theme="dark"] .theme-toggle {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-color: #475569;
+        }
+
+        [data-theme="dark"] .theme-slider {
+            transform: translateX(28px);
+            background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        [data-theme="dark"] .theme-toggle:focus {
+            border-color: var(--accent-orange);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 0 0 3px rgba(249, 115, 22, 0.2);
+        }
+
+        /* Animation for the slider movement */
+        .theme-slider.moving {
+            transform: scale(0.9);
+        }
+
+        /* Mobile menu button remains the same */
+        .mobile-menu-btn {
+            display: inline-block;
+            background: none;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin-left: 1rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        /* Demo container */
+        .demo-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .demo-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, #2563eb 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: backgroundFloat 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+            border-radius: 50%;
+            animation: shimmer 15s linear infinite;
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-icon:nth-child(4) {
+            top: 30%;
+            right: 30%;
+            animation-delay: 1s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+
+        .badge-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease 0.4s both;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.6s both;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .stat-item:hover::before {
+            left: 100%;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+
+        .scroll-text {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .scroll-arrow {
+            width: 2px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.5);
+            position: relative;
+            animation: scrollBounce 2s infinite;
+        }
+
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 8px solid rgba(255, 255, 255, 0.7);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .enhanced-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .enhanced-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(30,64,175,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+
+         .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .enhanced-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .enhanced-service-card {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .enhanced-service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .enhanced-service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .enhanced-service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .enhanced-service-card:hover .service-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+        }
+
+        .enhanced-service-card:hover .service-icon::before {
+            animation: shimmerEffect 0.6s ease;
+            opacity: 1;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .enhanced-service-card:hover .service-title {
+            color: var(--primary-blue);
+        }
+
+        .service-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+        }
+
+        .service-features li:hover {
+            color: var(--text-primary);
+            padding-left: 2.5rem;
+        }
+
+        .learn-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .learn-more-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+        }
+
+        .learn-more-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Testimonial/Trust Section */
+        .trust-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" width="100" height="20" patternUnits="userSpaceOnUse"><path d="M0 10 Q25 0 50 10 T100 10 V20 H0 Z" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+        }
+
+        .trust-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .trust-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .trust-stat {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        /* About Section */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: white;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .about-main {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: var(--accent-orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Story Section */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .story-content h3 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .story-visual {
+            position: relative;
+            height: 400px;
+            border-radius: 20px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .story-visual::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .story-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            width: 150px;
+            height: 150px;
+            background: var(--primary-blue);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            opacity: 0.1;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .big-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .big-number-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-top: 10px;
+        }
+
+        /* Values Grid */
+        .values-section {
+            margin-bottom: 100px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--about-card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(74, 158, 255, 0.1);
+        }
+
+        .value-card {
+            background: var(--bg-secondary);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .value-card:hover::before {
+            left: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-blue);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .value-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .value-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Achievements Section */
+        .achievements-section {
+            background: var(--bg-secondary);
+            padding: 80px 0;
+            margin-bottom: 100px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievements-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievement-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(30, 64, 175, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+        }
+
+        .achievement-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .achievement-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            margin-bottom: 100px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+       .timeline::before {  
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 40px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            padding: 25px 30px;
+            border-radius: 15px;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -30px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 80px 0;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 60px !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-year {
+                left: -10px !important;
+                right: auto !important;
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 0.8rem !important;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(odd) {
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .industry-item {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .industry-item:hover {
+            border-color: var(--primary-blue);
+            transform: scale(1.02);
+        }
+
+        .industry-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .industry-title i {
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+        }
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .footer p i{
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Page Navigation */
+        .page-nav {
+            display: none;
+        }
+
+        .page-nav.active {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(30px); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(200%) rotate(45deg); }
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        @keyframes shimmerEffect {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% {
+                transform: translateX(0px);
+            }
+            50% {
+                transform: translateX(30px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(200%) rotate(45deg);
+            }
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        /* Dark theme adjustments */
+        [data-theme="dark"] .enhanced-section {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        [data-theme="dark"] .enhanced-service-card {
+            background: var(--bg-secondary);
+            border-color: var(--border-color);
+        }
+
+        [data-theme="dark"] .trust-section {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .strengths-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .floating-icon {
+                font-size: 1.5rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px){
+            .mobile-menu-btn{
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .enhanced-section { padding: 4rem 0; }
+            .enhanced-services-grid { 
+                grid-template-columns: 1fr; 
+                gap: 2rem; 
+                margin-top: 3rem;
+            }
+            .enhanced-service-card { padding: 2rem 1.5rem; }
+            .service-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+            .trust-stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+            .trust-number { font-size: 2.5rem; }
+            .floating-icon { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .enhanced-services-grid { grid-template-columns: 1fr; }
+            .trust-stats { grid-template-columns: 1fr; }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before, .hero::after, .floating-icon, .scroll-arrow {
+                animation: none;
+            }
+        }
+
+        /* Focus styles */
+        button:focus, a:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Dark theme adjustments */
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+
+        [data-theme="dark"] .stat-item {
+            background: rgba(15, 23, 42, 0.3);
+            border-color: rgba(100, 116, 139, 0.3);
+        }
+
+        [data-theme="dark"] .stat-item:hover {
+            border-color: rgba(100, 116, 139, 0.5);
+        }
+
+        [data-theme="dark"] .hero-badge {
+            background: rgba(15, 23, 42, 0.3);
+            border-color: rgba(100, 116, 139, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0 4rem;
+                min-height: 90vh;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                margin: 3rem 0;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .floating-icon {
+                font-size: 1.5rem;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero-badge {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            .hero::before,
+            .hero::after,
+            .floating-icon,
+            .scroll-arrow {
+                animation: none;
+            }
+        }
+
+               .contact-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="contact-grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23contact-grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-hero h2 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-hero p {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-main {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+
+        .contact-info-section {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .contact-info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-info-section h3 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info-section h3 i {
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+        }
+
+        .contact-address {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(59, 130, 246, 0.05));
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .contact-address strong {
+            color: var(--primary-blue);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-address p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .contact-details-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-detail-item {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-detail-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-orange));
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-detail-item:hover {
+            border-color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .contact-detail-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .contact-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        .contact-icon-wrapper i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-detail-content {
+            flex: 1;
+        }
+
+        .contact-detail-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .contact-detail-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .contact-detail-value a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-detail-value a:hover {
+            color: var(--accent-orange);
+        }
+
+        .contact-why-section h3 {
+            color: var(--primary-blue);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .contact-cards-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .contact-feature-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .contact-feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .contact-feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .contact-feature-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-feature-title {
+            color: var(--accent-orange);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .contact-feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .contact-cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .contact-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="cta-dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23cta-dots)"/></svg>');
+        }
+
+        .contact-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-cta-section h3 {
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-cta-section p {
+            color: white;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design for Contact Section */
+        @media (max-width: 968px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-info-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-cta-section {
+                padding: 40px 30px;
+            }
+
+            .contact-cta-section h3 {
+                font-size: 1.8rem;
+            }
+
+            .contact-cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .contact-btn-primary,
+            .contact-btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-hero {
+                padding: 60px 0 40px;
+            }
+
+            .contact-hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-main {
+                padding: 40px 0;
+            }
+
+            .contact-info-section {
+                padding: 30px 20px;
+            }
+
+            .contact-detail-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-text">NAVITECH</div>
+                </div>
+                
+                <nav>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#home" class="nav-link" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#about" class="nav-link" onclick="showPage('about')">About</a></li>
+                        <li><a href="#services" class="nav-link" onclick="showPage('services')">Services</a></li>
+                        <li><a href="#industries" class="nav-link" onclick="showPage('industries')">Industries</a></li>
+                        <li><a href="#contact" class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <div class="theme-slider">
+                            <span class="theme-icon" id="themeIcon">☀️</span>
+                        </div>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page-nav active">
+            <section class="hero">
+                <div class="floating-elements">
+                    <div class="floating-icon"><i class="fas fa-cog"></i></div>
+                    <div class="floating-icon"><i class="fas fa-wrench"></i></div>
+                    <div class="floating-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="floating-icon"><i class="fas fa-industry"></i></div>
+                </div>        
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <div class="badge-icon"><i class="fas fa-star"></i></div>
+                            <span>Trusted Since 2010</span>
+                        </div>
+
+                        <h1>Engineering Precision, Delivering Excellence</h1>
+                        <p class="hero-subtitle">Leading engineering solutions provider specializing in high-precision manufacturing, innovative design, and cutting-edge technology solutions</p>
+
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">14+</span>
+                                <span class="stat-label">Years of Excellence</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">ISO</span>
+                                <span class="stat-label">Certified Quality</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">6+</span>
+                                <span class="stat-label">Industries Served</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Quality Assurance</span>
+                            </div>
+                        </div>
+                    
+                        <div class="hero-cta">
+                            <a href="#contact" class="cta-button" onclick="showPage('contact')">
+                                Get Started Today
+                                <span class="cta-arrow">→</span>
+                            </a>
+
+                            <div class="scroll-indicator">
+                                <span class="scroll-text">Explore More</span>
+                                <div class="scroll-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="enhanced-section">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-badge">Why Choose Us</div>
+                        <h2 class="section-title">Engineering Excellence That Drives Success</h2>
+                        <p class="section-subtitle">We deliver top-quality components to industries that demand durability, precision, and innovation. Our commitment to excellence ensures your projects succeed.</p>
+                    </div>
+
+                    <div class="enhanced-services-grid">
+                        <div class="enhanced-service-card">
+                            <div class="service-icon-wrapper">
+                                <div class="service-icon"><i class="fas fa-wrench"></i></div>
+                            </div>
+                            <h3 class="service-title">Complete Solutions</h3>
+                            <p class="service-description">End-to-end engineering solutions from concept to delivery, ensuring seamless project execution.</p>
+                            <ul class="service-features">
+                                <li>Raw material processing to finished components</li>
+                                <li>Custom design and engineering support</li>
+                                <li>Quality assurance at every stage</li>
+                                <li>Timely delivery and support</li>
+                            </ul>
+                            <a href="#services" class="learn-more-btn" onclick="showPage('services')">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="enhanced-service-card">
+                            <div class="service-icon-wrapper">
+                                <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                            </div>
+                            <h3 class="service-title">Advanced Technology</h3>
+                            <p class="service-description">State-of-the-art manufacturing facility equipped with cutting-edge technology and precision equipment.</p>
+                            <ul class="service-features">
+                                <li>Modern CNC machines and equipment</li>
+                                <li>Advanced quality inspection labs</li>
+                                <li>Automated manufacturing processes</li>
+                                <li>Industry 4.0 ready infrastructure</li>
+                            </ul>
+                            <a href="#about" class="learn-more-btn" onclick="showPage('about')">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="enhanced-service-card">
+                            <div class="service-icon-wrapper">
+                                <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                            </div>
+                            <h3 class="service-title">Quality First</h3>
+                            <p class="service-description">ISO-certified quality management system ensuring international standards and customer satisfaction.</p>
+                            <ul class="service-features">
+                                <li>ISO certified quality processes</li>
+                                <li>Rigorous testing and inspection</li>
+                                <li>100% quality assurance guarantee</li>
+                                <li>Continuous improvement culture</li>
+                            </ul>
+                            <a href="#industries" class="learn-more-btn" onclick="showPage('industries')">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trust-section">
+            <div class="container">
+                <div class="trust-content">
+                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;">Trusted by Industry Leaders</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem;">Our commitment to excellence has earned us the trust of leading companies across multiple industries.</p>
+                    
+                    <div class="trust-stats">
+                        <div class="trust-stat">
+                            <span class="trust-number">500+</span>
+                            <span class="trust-label">Projects Completed</span>
+                        </div>
+                        <div class="trust-stat">
+                            <span class="trust-number">99%</span>
+                            <span class="trust-label">Customer Satisfaction</span>
+                        </div>
+                        <div class="trust-stat">
+                            <span class="trust-number">24/7</span>
+                            <span class="trust-label">Technical Support</span>
+                        </div>
+                        <div class="trust-stat">
+                            <span class="trust-number">Zero</span>
+                            <span class="trust-label">Quality Compromises</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="enhanced-section" style="padding: 5rem 0; background: var(--bg-primary);">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 3rem;">
+                    <h2 class="section-title">Ready to Start Your Next Project?</h2>
+                    <p class="section-subtitle">Let's discuss how our precision engineering solutions can drive your business forward. Get in touch with our experts today.</p>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                        <a href="#contact" class="cta-button" onclick="showPage('contact')" style="margin: 0;">
+                            Get Free Quote
+                            <span class="cta-arrow">→</span>
+                        </a>
+                        <a href="#services" class="learn-more-btn" onclick="showPage('services')" style="margin: 0; padding: 1.2rem 3rem; font-size: 1.1rem;">
+                            View Our Services <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Call Us</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Speak directly with our engineering experts</p>
+                            <a href="tel:+919022813999" style="color: var(--accent-orange); font-weight: 600; text-decoration: none;">+91 9022813999</a>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Email Us</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Send us your project requirements</p>
+                            <a href="mailto:neeraj@navitechengineers.in" style="color: var(--accent-orange); font-weight: 600; text-decoration: none;">neeraj@navitechengineers.in</a>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 2rem;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Visit Us</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Tour our state-of-the-art facility</p>
+                            <span style="color: var(--accent-orange); font-weight: 600;">Palghar, Maharashtra</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page-nav section">
+            <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🔧 Trusted Since 2010</div>
+                <h1 class="hero-title">About Navitech Engineering</h1>
+                <p class="hero-subtitle">Engineering Precision, Delivering Excellence - Leading the industry with innovative solutions and unwavering commitment to quality</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="about-main">
+        <div class="container">
+            <!-- Our Story -->
+            <div class="story-section">
+                <div class="story-content">
+                    <h3>Our Engineering Journey</h3>
+                    <p>Navitech Engineering Pvt. Ltd. is a leading engineering solutions provider specializing in high-precision <strong>Forging, Casting, Machining, Sheet Metal, Fabrication</strong>, and innovative manufacturing processes.</p>
+                    <p>Established in 2010 with a vision to revolutionize precision engineering, Navitech has consistently delivered top-quality components to industries that demand durability, precision, and innovation.</p>
+                    <p>Located in <strong>Maharashtra</strong>, our state-of-the-art facility is equipped with advanced CNC machines, automated quality inspection labs, and a dedicated team of professionals who ensure every component meets international standards.</p>
+                </div>
+                <div class="story-visual">
+                    <div class="visual-content">
+                        <div class="big-number">14+</div>
+                        <div class="big-number-label">Years of Excellence</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Values -->
+            <div class="values-section">
+                <div class="section-header">
+                    <div class="section-tag">Our Foundation</div>
+                    <h2 class="section-title">Values That Drive Us</h2>
+                    <p class="section-description">We believe in quality, reliability, and partnership—offering end-to-end solutions from raw material processing to finished, ready-to-use components.</p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3 class="value-title">Precision First</h3>
+                        <p class="value-description">Uncompromising focus on accuracy and attention to detail in every component we manufacture</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <h3 class="value-title">Innovation</h3>
+                        <p class="value-description">Continuous improvement in processes, technology, and manufacturing techniques</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3 class="value-title">Partnership</h3>
+                        <p class="value-description">Building long-term relationships with clients through trust and reliable delivery</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⭐</div>
+                        <h3 class="value-title">Excellence</h3>
+                        <p class="value-description">Delivering superior quality that exceeds expectations and industry standards</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🛡️</div>
+                        <h3 class="value-title">Integrity</h3>
+                        <p class="value-description">Honest and transparent business practices with ethical manufacturing</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌟</div>
+                        <h3 class="value-title">Customer Success</h3>
+                        <p class="value-description">Dedicated to delivering solutions tailored to specific customer requirements</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="achievements-section">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-tag">Our Impact</div>
+                        <h2 class="section-title">Achievements That Define Us</h2>
+                    </div>
+
+                    <div class="achievements-grid">
+                        <div class="achievement-item">
+                            <div class="achievement-number">500+</div>
+                            <div class="achievement-label">Projects Completed</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">99%</div>
+                            <div class="achievement-label">Customer Satisfaction</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">6+</div>
+                            <div class="achievement-label">Industries Served</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-number">100%</div>
+                            <div class="achievement-label">Quality Assurance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-section">
+                <div class="section-header">
+                    <div class="section-tag">Our Evolution</div>
+                    <h2 class="section-title">Journey of Growth</h2>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2010</div>
+                            <h4 class="timeline-title">Foundation</h4>
+                            <p class="timeline-description">Navitech Engineering established with a vision to provide precision engineering solutions</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2013</div>
+                            <h4 class="timeline-title">ISO Certification</h4>
+                            <p class="timeline-description">Achieved ISO certification for quality management systems and processes</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2016</div>
+                            <h4 class="timeline-title">Facility Expansion</h4>
+                            <p class="timeline-description">Expanded manufacturing facility with advanced CNC machines and automation</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020</div>
+                            <h4 class="timeline-title">Industry 4.0</h4>
+                            <p class="timeline-description">Implemented smart manufacturing and Industry 4.0 ready infrastructure</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024</div>
+                            <h4 class="timeline-title">Innovation Hub</h4>
+                            <p class="timeline-description">Established dedicated R&D facility for next-generation engineering solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Start Your Project?</h2>
+                    <p class="cta-description">Let's discuss how our precision engineering solutions can drive your business forward. Get in touch with our experts today.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Free Quote</a>
+                        <a href="#services" class="btn btn-secondary">View Our Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="services" class="page-nav section">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive engineering solutions for diverse manufacturing needs</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hammer"></i></div>
+                        <h3 class="service-title">Forging Excellence</h3>
+                        <p class="service-description">High-strength, long-lasting components for demanding applications</p>
+                        <ul class="service-features">
+                            <li>Open Die & Closed Die Forging</li>
+                            <li>Precision Die Manufacturing</li>
+                            <li>Heat Treatment Services</li>
+                            <li>Surface Finishing</li>
+                            <li>Small to medium-size custom forgings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-cog"></i></div>
+                        <h3 class="service-title">Casting Expertise</h3>
+                        <p class="service-description">End-to-end casting solutions with dimensional accuracy</p>
+                        <ul class="service-features">
+                            <li>Green Sand, No-Bake Moulding</li>
+                            <li>Investment Casting</li>
+                            <li>Pressure Die Casting</li>
+                            <li>SG Iron and Grey Iron Casting</li>
+                            <li>Material certification support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-wrench"></i></div>
+                        <h3 class="service-title">Precision Machining</h3>
+                        <p class="service-description">Advanced machining capabilities for complex components</p>
+                        <ul class="service-features">
+                            <li>CNC Turning, Milling, VMC & HMC</li>
+                            <li>Precision Boring, Drilling, Tapping</li>
+                            <li>Grinding, Honing, Surface Finishing</li>
+                            <li>Sub-assemblies and integrated solutions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-ruler-combined"></i></div>
+                        <h3 class="service-title">Sheet Metal Fabrication</h3>
+                        <p class="service-description">Complete sheet metal solutions from design to finish</p>
+                        <ul class="service-features">
+                            <li>Laser Cutting, CNC Punching, Bending</li>
+                            <li>MIG, TIG, and Spot Welding</li>
+                            <li>Powder Coating, Epoxy Painting</li>
+                            <li>Custom enclosure and structure design</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 2rem; text-align: center;">Our Product Portfolio</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 1rem;">Forged Components</h4>
+                            <p>Shafts, flanges, gear blanks, levers, and custom forgings</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 1rem;">Castings</h4>
+                            <p>SG Iron, Grey Iron, and Aluminum castings for diverse sectors</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 1rem;">Machined Components</h4>
+                            <p>Close-tolerance CNC/VMC machined parts</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 1rem;">Sheet Metal Products</h4>
+                            <p>Enclosures, brackets, panels, and fabricated assemblies</p>
+                        </div>
+
+                        <div class="service-card">
+                            <h4 style="color: var(--accent-orange); margin-bottom: 1rem;">Custom Engineering Solutions</h4>
+                            <p>Designed and manufactured per drawings and samples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Industries Page -->
+        <div id="industries" class="page-nav section">
+            <div class="container">
+                <h2 class="section-title">Industries We Serve</h2>
+                <p class="section-subtitle">Supporting a wide spectrum of industries with components designed for performance and longevity</p>
+                
+                <div class="industries-grid">
+                    <div class="industry-item">
+                        <h3 class="industry-title"><i class="fas fa-car"></i> Automotive</h3>
+                        <p>Precision engine, transmission, and chassis components for reliable performance</p>
+                    </div>
+                    
+                    <div class="industry-item">
+                        <h3 class="industry-title"><i class="fas fa-building"></i> Construction & Infrastructure</h3>
+                        <p>Structural castings, pipe fittings, and heavy-duty brackets for construction projects</p>
+                    </div>
+                    
+                    <div class="industry-item">
+                        <h3 class="industry-title"><i class="fas fa-tractor"></i> Agriculture</h3>
+                        <p>Tractor and farming equipment components built for rugged outdoor conditions</p>
+                    </div>
+                    
+                    <div class="industry-item">
+                        <h3 class="industry-title"><i class="fas fa-industry"></i> Industrial Machinery</h3>
+                        <p>High-strength parts for heavy-duty industrial machines and equipment</p>
+                    </div>
+                    
+                    <div class="industry-item">
+                        <h3 class="industry-title"><i class="fas fa-bolt"></i> Energy & Utilities</h3>
+                        <p>Critical components for oil & gas, renewable energy, and utility infrastructure</p>
+                    </div>
+                    
+                    <div class="industry-item">
+                        <h3 class="industry-title"><i class="fas fa-train"></i> Railways</h3>
+                        <p>High-durability castings and machined components for railway applications</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; text-align: center;">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 2rem;">Quality Assurance & Certifications</h3>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-industry"></i></div>
+                            <h4>Plant & Infrastructure</h4>
+                            <ul class="service-features">
+                                <li>Strategic location at Palghar</li>
+                                <li>Dedicated manufacturing zones</li>
+                                <li>All processes under one roof</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                            <h4>Quality Lab</h4>
+                            <ul class="service-features">
+                                <li>Coordinate Measuring Machine (CMM)</li>
+                                <li>Hardness Tester, Spectrometer</li>
+                                <li>Surface Roughness Tester</li>
+                                <li>Certified gauges and fixtures</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fas fa-check-circle"></i></div>
+                            <h4>Certifications</h4>
+                            <ul class="service-features">
+                                <li>ISO-Certified Quality Management</li>
+                                <li>IATF standards (future-ready)</li>
+                                <li>Material certification support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+                <div id="contact" class="page-nav section">
+            <div class="contact-hero">
+                <div class="container">
+                    <div class="contact-hero-content">
+                        <h2>Contact Us</h2>
+                        <p>Get in touch with our engineering experts for your next project</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-main">
+                <div class="container">
+                    <div class="contact-grid">
+                        <div class="contact-info-section">
+                            <h3><i class="fas fa-building"></i> Company Information</h3>
+                            
+                            <div class="contact-address">
+                                <strong>Navitech Engineering Pvt. Ltd.</strong>
+                                <p>
+                                    Plot No 9, Dawajay Industrial Complex,<br>
+                                    Bhiwandi – Wada Road, Village Khupari,<br>
+                                    Wada, Palghar 421303, Maharashtra, India
+                                </p>
+                            </div>
+                            
+                            <div class="contact-details-grid">
+                                <div class="contact-detail-item">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <div class="contact-detail-label">Phone</div>
+                                        <div class="contact-detail-value">
+                                            <a href="tel:+919022813999">+91 9022813999</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail-item">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <div class="contact-detail-label">Email</div>
+                                        <div class="contact-detail-value">
+                                            <a href="mailto:neeraj@navitechengineers.in">neeraj@navitechengineers.in</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail-item">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <div class="contact-detail-label">Website</div>
+                                        <div class="contact-detail-value">Coming Soon</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail-item">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-detail-content">
+                                        <div class="contact-detail-label">Location</div>
+                                        <div class="contact-detail-value">Palghar, Maharashtra</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-why-section">
+                            <h3>Why Partner With Us?</h3>
+                            <div class="contact-cards-grid">
+                                <div class="contact-feature-card">
+                                    <div class="contact-feature-header">
+                                        <div class="contact-feature-icon">🎯</div>
+                                        <h4 class="contact-feature-title">Our Vision</h4>
+                                    </div>
+                                    <p>To be a global leader in precision manufacturing by offering cost-effective, innovative, and reliable engineering solutions.</p>
+                                </div>
+                                
+                                <div class="contact-feature-card">
+                                    <div class="contact-feature-header">
+                                        <div class="contact-feature-icon">🚀</div>
+                                        <h4 class="contact-feature-title">Our Mission</h4>
+                                    </div>
+                                    <p>To deliver high-quality components with exceptional precision and on-time delivery, building long-term relationships with our customers and stakeholders.</p>
+                                </div>
+                                
+                                <div class="contact-feature-card">
+                                    <div class="contact-feature-header">
+                                        <div class="contact-feature-icon">✨</div>
+                                        <h4 class="contact-feature-title">Ready to Get Started?</h4>
+                                    </div>
+                                    <p>Contact us today to discuss your engineering requirements and discover how we can help bring your projects to life with precision and excellence.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-cta-section">
+                        <div class="contact-cta-content">
+                            <h3>Let's Build Something Amazing Together</h3>
+                            <p>Ready to start your project? Our team of experts is standing by to discuss your requirements and provide the perfect engineering solution.</p>
+                            <div class="contact-cta-buttons">
+                                <a href="tel:+919022813999" class="contact-btn-primary">
+                                    <i class="fas fa-phone"></i> Call Now
+                                </a>
+                                <a href="mailto:neeraj@navitechengineers.in" class="contact-btn-secondary">
+                                    <i class="fas fa-envelope"></i> Send Email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Navitech Engineering</h3>
+                    <p>Leading engineering solutions provider specializing in high-precision manufacturing since 2010.</p>
+                    <p><strong>Engineering Precision, Delivering Excellence</strong></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <p><a href="#services" onclick="showPage('services')">Forging Excellence</a></p>
+                    <p><a href="#services" onclick="showPage('services')">Casting Expertise</a></p>
+                    <p><a href="#services" onclick="showPage('services')">Precision Machining</a></p>
+                    <p><a href="#services" onclick="showPage('services')">Sheet Metal Fabrication</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Industries</h3>
+                    <p><a href="#industries" onclick="showPage('industries')">Automotive</a></p>
+                    <p><a href="#industries" onclick="showPage('industries')">Construction</a></p>
+                    <p><a href="#industries" onclick="showPage('industries')">Agriculture</a></p>
+                    <p><a href="#industries" onclick="showPage('industries')">Industrial Machinery</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+919022813999">+91 9022813999</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:neeraj@navitechengineers.in">neeraj@navitechengineers.in</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Palghar, Maharashtra, India</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Navitech Engineering Pvt. Ltd. All rights reserved. | ISO Certified Quality Management System</p>
+            </div>
+        </div>
+    </footer>
+ 
+    <script>
+        // ====================== THEME TOGGLE ======================
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const themeSlider = document.querySelector('.theme-slider');
+const body = document.body;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+// Toggle theme
+themeToggle.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    themeSlider?.classList.add('moving');
+    
+    setTimeout(() => {
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+        setTimeout(() => themeSlider?.classList.remove('moving'), 150);
+    }, 100);
+});
+
+function updateThemeIcon(theme) {
+    if (theme === 'light') {
+        themeIcon.textContent = '☀️';
+        themeIcon.style.transform = 'rotate(0deg)';
+    } else {
+        themeIcon.textContent = '🌙';
+        themeIcon.style.transform = 'rotate(180deg)';
+    }
+}
+
+// Keyboard accessibility
+themeToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        themeToggle.click();
+    }
+});
+
+// Smooth transition after page load
+window.addEventListener('load', () => {
+    document.body.style.transition = 'all 0.3s ease';
+    document.body.classList.add('loading');
+});
+
+// ====================== MOBILE MENU ======================
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
+
+mobileMenuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// ====================== PAGE NAVIGATION ======================
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page-nav');
+    pages.forEach(page => page.classList.remove('active'));
+
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) targetPage.classList.add('active');
+
+    window.location.hash = pageId;
+    navMenu.classList.remove('active');
+    window.scrollTo(0, 0);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById(hash)) {
+        showPage(hash);
+    } else {
+        showPage('home');
+    }
+});
+
+// Smooth scrolling for internal links
+document.addEventListener('click', (e) => {
+    if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const targetId = e.target.getAttribute('href').substring(1);
+        if (document.getElementById(targetId)) {
+            showPage(targetId);
+        }
+    }
+});
+
+// ====================== INTERSECTION OBSERVER + ANIMATIONS (MAIN SITE) ======================
+document.addEventListener('DOMContentLoaded', () => {
+    const serviceCards = document.querySelectorAll('.enhanced-service-card');
+    serviceCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.2}s`;
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.animation = 'fadeInUp 0.8s ease forwards';
+    });
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    const animateElements = document.querySelectorAll(
+        '.service-card, .industry-item, .strength-item, .enhanced-service-card, .trust-stat, .section-header'
+    );
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
+    });
+
+    // Mouse move 3D tilt effect for enhanced service cards
+    serviceCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+});
+
+// ====================== INTERSECTION OBSERVER + ANIMATIONS (ABOUT PAGE) ======================
+const aboutObserverOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, aboutObserverOptions);
+
+// Initialize animations for About Page
+document.addEventListener('DOMContentLoaded', () => {
+    const aboutAnimateElements = document.querySelectorAll(
+        '.value-card, .achievement-item, .timeline-item, .story-content, .story-visual'
+    );
+    
+    aboutAnimateElements.forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s ease';
+        el.style.transitionDelay = `${index * 0.1}s`;
+        aboutObserver.observe(el);
+    });
+
+    // 3D tilt effect for value cards
+    const valueCards = document.querySelectorAll('.value-card');
+    valueCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+
+    // Counter animation for achievements
+    const counters = document.querySelectorAll('.achievement-number');
+    counters.forEach(counter => {
+        const target = parseInt(counter.textContent);
+        const isPercentage = counter.textContent.includes('%');
+        const isPlus = counter.textContent.includes('+');
+        let current = 0;
+        
+        const increment = target / 100;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            let displayValue = Math.floor(current);
+            if (isPercentage) displayValue += '%';
+            if (isPlus) displayValue += '+';
+            
+            counter.textContent = displayValue;
+        }, 20);
+    });
+});
+
+// Smooth scrolling for CTA buttons (About Page)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// ====================== SCROLL OPTIMIZATION ======================
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {}, 16);
+});
+
+// ====================== SEO + ACCESSIBILITY ======================
+document.addEventListener('DOMContentLoaded', () => {
+    const updatePageTitle = (pageId) => {
+        const titles = {
+            home: 'Navitech Engineering - Engineering Precision, Delivering Excellence',
+            about: 'About Us - Navitech Engineering',
+            services: 'Our Services - Navitech Engineering',
+            industries: 'Industries We Serve - Navitech Engineering',
+            contact: 'Contact Us - Navitech Engineering'
+        };
+        document.title = titles[pageId] || titles.home;
+    };
+
+    const originalShowPage = showPage;
+    showPage = function(pageId) {
+        originalShowPage(pageId);
+        updatePageTitle(pageId);
+    };
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+        }
+    });
+
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const firstFocusableElement = document.querySelector(focusableElements);
+    const focusableContent = document.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstFocusableElement) {
+                    lastFocusableElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastFocusableElement) {
+                    firstFocusableElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+});
+
+// ====================== ERROR HANDLING ======================
+document.addEventListener('error', (e) => {
+    if (e.target.tagName === 'IMG') {
+        e.target.style.display = 'none';
+    }
+}, true);
+
+// ====================== SERVICE WORKER ======================
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        console.log('Browser supports service workers');
+    });
+}
+
+// ====================== STATS + PARALLAX + HERO EFFECT ======================
+document.addEventListener('DOMContentLoaded', () => {
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach((item, index) => {
+        item.style.animationDelay = `${0.8 + (index * 0.1)}s`;
+    });
+
+    // Parallax floating icons
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.floating-icon');
+        parallaxElements.forEach((element, index) => {
+            const speed = 0.5 + (index * 0.1);
+            element.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+        });
+    });
+
+    // Hero content mouse effect
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+    if (hero && heroContent) {
+        hero.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const { offsetWidth, offsetHeight } = hero;
+            const x = (clientX / offsetWidth - 0.5) * 2;
+            const y = (clientY / offsetHeight - 0.5) * 2;
+            heroContent.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+        });
+        hero.addEventListener('mouseleave', () => {
+            heroContent.style.transform = 'translate(0, 0)';
+        });
+    }
+});
+
+    </script>
+</body>
+</html>
